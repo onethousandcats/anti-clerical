@@ -4,8 +4,22 @@ import { OrbitControls } from '@react-three/drei';
 import Board from './components/Board';
 import Square from './components/Square';
 import Piece from './components/Piece';
+import { useBoardStore } from './stores/useBoardStore';
+import { useEffect } from 'react';
+import { useSelectedStore } from './stores/useSelectedStore';
 
 function App() {
+  const { board } = useBoardStore();
+  const { selectedStore, selected } = useSelectedStore();
+
+  useEffect(() => {
+    console.log(board);
+  }, [board]);
+
+  useEffect(() => {
+    console.log(selected.get());
+  }, [selectedStore]);
+
   return (
     <div className="App">
       <Canvas
